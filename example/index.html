@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>资源加载</title>
+    <script src="../dist/loadx.min.js"></script>
+</head>
+<body>
+
+<script>
+    var imgs = [
+        'https://iph.href.lu/879x200',
+        'https://iph.href.lu/600x200',
+        'https://iph.href.lu/500x200',
+        'https://iph.href.lu/400x200',
+        'https://iph.href.lu/900x200'
+      ];
+      
+   var loader = new LoaderX();
+      for (var img of imgs) {
+        loader.addImage(img)
+      }
+   //=========资源加载=========
+        loader.addCompletionListener(function () {
+            console.log('done');
+        });
+        loader.addProgressListener(function(process) {
+            console.log(Math.floor(100 * process.completedCount / process.totalCount))
+        })
+        //启动资源加载管理器
+        loader.start();
+</script>
+
+</body>
+</html>

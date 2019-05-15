@@ -1,0 +1,36 @@
+{
+  "name": "loaderx",
+  "version": "1.0.0",
+  "description": "load resources plugins",
+  "main": "./src/loadx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenyiweb/loaderX.git"
+  },
+  "keywords": [
+    "load",
+    "img"
+  ],
+  "author": "kevin",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^4.0.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.2",
+    "readable-stream": "^3.3.0"
+  },
+  "bugs": {
+    "url": "https://github.com/wenyiweb/loaderX/issues"
+  },
+  "homepage": "https://github.com/wenyiweb/loaderX#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "gulp-babel": "^8.0.0"
+  }
+}
