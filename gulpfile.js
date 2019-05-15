@@ -6,7 +6,7 @@ const babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
 gulp.task('build:source', function () {
   return pipeline(
-        gulp.src('src/loadx.js'),
+        gulp.src('src/loaderx.js'),
         babel({
             presets: ['@babel/env']
         }),
@@ -18,7 +18,7 @@ gulp.task('build:source', function () {
 });
 gulp.task('build:min', function () {
     return pipeline(
-          gulp.src('src/loadx.js'),
+          gulp.src('src/loaderx.js'),
           babel({
               presets: ['@babel/env']
           }),

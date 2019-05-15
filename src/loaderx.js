@@ -425,5 +425,4 @@ if (typeof window !== 'undefined') {
     window.LoaderX = LoaderX;
 }
 
-
 module.exports = LoaderX;

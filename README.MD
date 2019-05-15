@@ -7,7 +7,7 @@
 your html
 
 ```html
-<script src="loadx.min.js"></script>
+<script src="loaderx.min.js"></script>
 
 ```
 
@@ -21,7 +21,7 @@ your app.js
 
 ```javascript
 
-import LoaderX from 'loadx'
+import LoaderX from 'loaderx'
 
 ```
 

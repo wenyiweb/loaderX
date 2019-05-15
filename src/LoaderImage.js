@@ -81,5 +81,4 @@ function LoaderImage(url, tags, priority, origin) {
     };
 
 }
-
 module.exports = LoaderImage;
