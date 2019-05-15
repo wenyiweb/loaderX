@@ -22,7 +22,8 @@
     "gulp-browserify": "^0.5.1",
     "gulp-rename": "^1.4.0",
     "gulp-uglify": "^3.0.2",
-    "readable-stream": "^3.3.0"
+    "readable-stream": "^3.3.0",
+    "shell-quote": ">=1.6.1"
   },
   "bugs": {
     "url": "https://github.com/wenyiweb/loaderX/issues"
