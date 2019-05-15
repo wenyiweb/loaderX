@@ -1,6 +1,6 @@
 {
   "name": "loaderx",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "load resources plugins",
   "main": "./src/loaderx.js",
   "scripts": {

@@ -1913,7 +1913,7 @@ LoaderX.prototype.addImage = function (url, tags, priority, origin) {
 
 
 if (typeof define === 'function' && define.amd) {
-  define('LoaderX', [], function () {
+  define([], function () {
     return LoaderX;
   });
 } //Define globally in case AMD is not available or unused
@@ -1921,8 +1921,11 @@ if (typeof define === 'function' && define.amd) {
 
 if (typeof window !== 'undefined') {
   window.LoaderX = LoaderX;
-}
+} //Add support form CommonJS libraries such as browserify.
 
-module.exports = LoaderX;
-}).call(this,require("qC859L"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_39d8089c.js","/")
+
+if (typeof exports !== 'undefined') {
+  exports.LoaderX = LoaderX;
+}
+}).call(this,require("qC859L"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3810ad2e.js","/")
 },{"./LoaderImage":5,"buffer":2,"qC859L":4}]},{},[6])

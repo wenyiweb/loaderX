@@ -416,7 +416,7 @@ LoaderX.prototype.addImage = function (url, tags, priority, origin) {
 
 // AMD module support
 if (typeof define === 'function' && define.amd) {
-    define('LoaderX', [], function () {
+    define([], function () {
         return LoaderX;
     });
 }
@@ -425,4 +425,7 @@ if (typeof window !== 'undefined') {
     window.LoaderX = LoaderX;
 }
 
-module.exports = LoaderX;
+//Add support form CommonJS libraries such as browserify.
+if (typeof exports !== 'undefined') {
+    exports.LoaderX = LoaderX;
+}
