@@ -51,7 +51,19 @@ let LoaderImage = require('./LoaderImage');
 
             return [val];
         };
-
+        // 预加载容器
+        var id = Math.floor(Math.random() * 100);
+        this.preContainer = document.getElementById('preContainer' + id);
+        if (!this.preContainer) {
+            var div = document.createElement('div');
+            div.id = 'preContainer' + id;
+            div.style.width = '0px';
+            div.style.height = '0px';
+            div.style.overflow = 'hidden';
+            div.style.opacity = 0;
+            document.body.appendChild(div);
+        }
+        this.preContainer = document.getElementById('preContainer' + id);
         // add an entry to the list of resources to be loaded
         this.add = function (resource) {
 
@@ -407,8 +419,8 @@ let LoaderImage = require('./LoaderImage');
 
 
     // add a convenience method to LoaderX for adding an image
-    LoaderX.prototype.addImage = function (url, tags, priority, origin) {
-        var imageLoader = new LoaderImage(url, tags, priority, origin);
+    LoaderX.prototype.addImage = function (url, origin) {
+        var imageLoader = new LoaderImage(this.preContainer, url, origin);
         this.add(imageLoader);
 
         return imageLoader.img;

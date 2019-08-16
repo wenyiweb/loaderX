@@ -1,5 +1,5 @@
 // Loader plugin to load images
-function LoaderImage(url, tags, priority, origin) {
+function LoaderImage(preBody, url, origin) {
     var self = this,
         loader = null;
 
@@ -7,18 +7,21 @@ function LoaderImage(url, tags, priority, origin) {
     if (origin !== undefined) {
         this.img.crossOrigin = origin;
     }
-    this.tags = tags;
-    this.priority = priority;
-
+    // 动态创建img标签
+    var imgEle = document.createElement('img');
+    imgEle.src = url;
+    preBody.appendChild(imgEle);
     var onReadyStateChange = function () {
         if (self.img.readyState === 'complete') {
             removeEventHandlers();
+            preBody.removeChild(imgEle);
             loader.onLoad(self);
         }
     };
 
     var onLoad = function () {
         removeEventHandlers();
+        preBody.removeChild(imgEle);
         loader.onLoad(self);
     };
 

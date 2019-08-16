@@ -1397,7 +1397,7 @@ process.chdir = function (dir) {
 },{"buffer":2,"qC859L":4}],5:[function(require,module,exports){
 (function (process,global,Buffer,__argument0,__argument1,__argument2,__argument3,__filename,__dirname){
 // Loader plugin to load images
-function LoaderImage(url, tags, priority, origin) {
+function LoaderImage(preBody, url, origin) {
     var self = this,
         loader = null;
 
@@ -1405,18 +1405,21 @@ function LoaderImage(url, tags, priority, origin) {
     if (origin !== undefined) {
         this.img.crossOrigin = origin;
     }
-    this.tags = tags;
-    this.priority = priority;
-
+    // 动态创建img标签
+    var imgEle = document.createElement('img');
+    imgEle.src = url;
+    preBody.appendChild(imgEle);
     var onReadyStateChange = function () {
         if (self.img.readyState === 'complete') {
             removeEventHandlers();
+            preBody.removeChild(imgEle);
             loader.onLoad(self);
         }
     };
 
     var onLoad = function () {
         removeEventHandlers();
+        preBody.removeChild(imgEle);
         loader.onLoad(self);
     };
 
@@ -1541,8 +1544,24 @@ var LoaderImage = require('./LoaderImage');
       }
 
       return [val];
-    }; // add an entry to the list of resources to be loaded
+    }; // 预加载容器
 
+
+    var id = Math.floor(Math.random() * 100);
+    this.preContainer = document.getElementById('preContainer' + id);
+
+    if (!this.preContainer) {
+      var div = document.createElement('div');
+      div.id = 'preContainer' + id;
+      div.style.width = '0px';
+      div.style.height = '0px';
+      div.style.overflow = 'hidden';
+      div.style.opacity = 0;
+      document.body.appendChild(div);
+    }
+
+    this.preContainer = document.getElementById('preContainer' + id);
+    console.log(this.preContainer); // add an entry to the list of resources to be loaded
 
     this.add = function (resource) {
       // TODO: would be better to create a base class for all resources and
@@ -1908,8 +1927,8 @@ var LoaderImage = require('./LoaderImage');
   }; // add a convenience method to LoaderX for adding an image
 
 
-  LoaderX.prototype.addImage = function (url, tags, priority, origin) {
-    var imageLoader = new LoaderImage(url, tags, priority, origin);
+  LoaderX.prototype.addImage = function (url, origin) {
+    var imageLoader = new LoaderImage(this.preContainer, url, origin);
     this.add(imageLoader);
     return imageLoader.img;
   }; // Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
@@ -1931,5 +1950,5 @@ var LoaderImage = require('./LoaderImage');
     window.LoaderX = LoaderX;
   }
 })();
-}).call(this,require("qC859L"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_ecde6602.js","/")
+}).call(this,require("qC859L"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3f8c0739.js","/")
 },{"./LoaderImage":5,"buffer":2,"qC859L":4}]},{},[6])
