@@ -1560,8 +1560,7 @@ var LoaderImage = require('./LoaderImage');
       document.body.appendChild(div);
     }
 
-    this.preContainer = document.getElementById('preContainer' + id);
-    console.log(this.preContainer); // add an entry to the list of resources to be loaded
+    this.preContainer = document.getElementById('preContainer' + id); // add an entry to the list of resources to be loaded
 
     this.add = function (resource) {
       // TODO: would be better to create a base class for all resources and
@@ -1950,5 +1949,5 @@ var LoaderImage = require('./LoaderImage');
     window.LoaderX = LoaderX;
   }
 })();
-}).call(this,require("qC859L"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_3f8c0739.js","/")
+}).call(this,require("qC859L"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer,arguments[3],arguments[4],arguments[5],arguments[6],"/fake_fc53063a.js","/")
 },{"./LoaderImage":5,"buffer":2,"qC859L":4}]},{},[6])
